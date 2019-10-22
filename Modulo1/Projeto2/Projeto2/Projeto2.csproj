@@ -51,14 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Banco.cs" />
+    <Compile Include="BancoMap.cs" />
+    <Compile Include="BancoRepository.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ClienteMap.cs" />
     <Compile Include="ClienteRepository.cs" />
     <Compile Include="Conta.cs" />
     <Compile Include="ContaMap.cs" />
-    <Compile Include="Migrations\201910150119389_V1.cs" />
-    <Compile Include="Migrations\201910150119389_V1.designer.cs">
-      <DependentUpon>201910150119389_V1.cs</DependentUpon>
+    <Compile Include="IBancoRepository.cs" />
+    <Compile Include="IBaseRepository.cs" />
+    <Compile Include="IClienteRepository.cs" />
+    <Compile Include="IContaRepository.cs" />
+    <Compile Include="Migrations\201910220027428_Criacao_de_Tabelas.cs" />
+    <Compile Include="Migrations\201910220027428_Criacao_de_Tabelas.designer.cs">
+      <DependentUpon>201910220027428_Criacao_de_Tabelas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Projeto2Context.cs" />
@@ -70,8 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910150119389_V1.resx">
-      <DependentUpon>201910150119389_V1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910220027428_Criacao_de_Tabelas.resx">
+      <DependentUpon>201910220027428_Criacao_de_Tabelas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

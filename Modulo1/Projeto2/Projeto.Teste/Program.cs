@@ -19,7 +19,7 @@ namespace Projeto.Teste
             conta.Saldo = 1000;
             conta.ContaCorrente = "123456";
             conta.Agencia = "123";
-            conta.Banco = "Itaú";
+            //conta.Banco = "Itaú";
 
             //repository.Inserir(conta);
 
@@ -32,7 +32,7 @@ namespace Projeto.Teste
             contaEditar.Saldo = 1000;
             contaEditar.ContaCorrente = "123456";
             contaEditar.Agencia = "123";
-            contaEditar.Banco = "Itaú";
+            //contaEditar.Banco = "Itaú";
 
             //repository.Editar(contaEditar);
             #endregion

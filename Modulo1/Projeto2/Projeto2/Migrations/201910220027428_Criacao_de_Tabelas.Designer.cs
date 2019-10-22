@@ -7,13 +7,13 @@ namespace Projeto2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.3.0")]
-    public sealed partial class V1 : IMigrationMetadata
+    public sealed partial class Criacao_de_Tabelas : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(V1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Criacao_de_Tabelas));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910150119389_V1"; }
+            get { return "201910220027428_Criacao_de_Tabelas"; }
         }
         
         string IMigrationMetadata.Source

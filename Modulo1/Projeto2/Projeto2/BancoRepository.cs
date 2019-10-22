@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projeto2
 {
-    public class ClienteRepository: IClienteRepository
+    public class BancoRepository: IBancoRepository
     {
         //C - Create (Insert)
         //R - Read(Select)
@@ -15,49 +15,46 @@ namespace Projeto2
 
         public Projeto2Context Context { get; set; }
 
-        public ClienteRepository()
+        public BancoRepository()
         {
             Context = new Projeto2Context();
         }
-
-        public void Inserir(Cliente cliente)
+        public void Inserir(Banco banco)
         {
-            Context.Clientes.Add(cliente);
+            Context.Bancos.Add(banco);
             Context.SaveChanges();
         }
 
-        public void Editar(Cliente cliente)
+        public void Editar(Banco banco)
         {
             //Editar Modelo 1
-            Context.Entry<Cliente>(cliente).State = System.Data.Entity.EntityState.Modified;
+            Context.Entry<Banco>(banco).State = System.Data.Entity.EntityState.Modified;
             Context.SaveChanges();
 
-            //Editar Modelo 2
-            //Conta contaDB = Obter(conta.Id);
         }
 
-        public void Alterar(Cliente cliente)
+        public void Alterar(Banco banco)
         {
-            Context.Clientes.Add(cliente);
+            Context.Bancos.Add(banco);
             Context.SaveChanges();
         }
 
         public void Apagar(int id)
         {
-            Cliente clienteDB = Obter(id);
-            if (clienteDB != null)
+            Banco bancoDB = Obter(id);
+            if (bancoDB != null)
             {
-                Context.Clientes.Remove(clienteDB);
+                Context.Bancos.Remove(bancoDB);
                 Context.SaveChanges();
             }
         }
 
-        public Cliente Obter(int id)
+        public Banco Obter(int id)
         {
-            return Context.Clientes.Where(x => x.Id == id).FirstOrDefault();
+            return Context.Bancos.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public IEnumerable<Cliente> Obter()
+        public IEnumerable<Banco> Obter()
         {
             throw new NotImplementedException();
         }

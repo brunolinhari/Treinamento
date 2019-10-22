@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projeto2
 {
-    public class ContaRepository
+    public class ContaRepository : IContaRepository
     {
         //C - Create (Insert)
         //R - Read(Select)
@@ -74,6 +74,16 @@ namespace Projeto2
         {
             Context.Database.ExecuteSqlCommand($"UPDATE tab_conta SET saldo=Saldo-{valor} WHERE id={contaOrigem.Id}");
             Context.Database.ExecuteSqlCommand($"UPDATE tab_conta SET saldo=Saldo+{valor} WHERE id={contaDestino.Id}");
+        }
+
+        public Conta Obter(string agencia, string contaCorrente)
+        {
+            return Context.Contas.Where(x => x.Agencia == agencia && x.ContaCorrente == contaCorrente).FirstOrDefault();
+        }
+
+        public bool ExisteSaldo(int Id, decimal valor)
+        {
+            throw new NotImplementedException();
         }
     }
 }

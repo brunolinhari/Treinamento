@@ -17,18 +17,26 @@ namespace Projeto2
 
         public DbSet<Cliente> Clientes { get; set; }
 
+        public DbSet<Banco> Bancos { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Properties<String>().Configure(p => p.HasColumnType("varchar"));
-            
-            modelBuilder.Configurations.Add(new ContaMap());
-            modelBuilder.Configurations.Add(new ClienteMap());
-
             modelBuilder.Entity<Conta>()
                         .HasRequired<Cliente>(s => s.Cliente)
                         .WithMany(a => a.Contas)
                         .HasForeignKey<int>(c => c.ClienteId);
-            
+
+            modelBuilder.Entity<Conta>()
+                        .HasRequired<Banco>(s => s.Banco)
+                        .WithMany(a => a.Contas)
+                        .HasForeignKey<int>(c => c.BancoId);
+
+            modelBuilder.Properties<String>().Configure(p => p.HasColumnType("varchar"));
+
+            modelBuilder.Configurations.Add(new ContaMap());
+            modelBuilder.Configurations.Add(new ClienteMap());
+            modelBuilder.Configurations.Add(new BancoMap());
+
             base.OnModelCreating(modelBuilder);
         }
     }
