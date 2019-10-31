@@ -8,6 +8,8 @@ namespace Projeto2
 {
     public class ClienteRepository: IClienteRepository
     {
+        public static object inserir;
+
         //C - Create (Insert)
         //R - Read(Select)
         //U - Update(Update)
