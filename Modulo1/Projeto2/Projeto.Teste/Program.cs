@@ -22,19 +22,16 @@ namespace Projeto.Teste
             //ClienteRepositorio.Inserir(cliente);
             #endregion
 
-            BancoRepository BancoRepositorio = new BancoRepository();
-
             #region InserirBanco
+            BancoRepository BancoRepositorio = new BancoRepository();
             Banco banco = new Banco();
             banco.Codigo = 243;
             banco.Nome = "Itaú";
-
             //BancoRepositorio.Inserir(banco);
             #endregion
 
-            ContaRepository repository = new ContaRepository();
-
             #region InserirConta
+            ContaRepository repository = new ContaRepository();
             Conta conta = new Conta();
             conta.Limite = 100;
             conta.Saldo = 1000;

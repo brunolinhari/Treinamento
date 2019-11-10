@@ -56,7 +56,7 @@ namespace Projeto2
 
         public IEnumerable<Banco> Obter()
         {
-            throw new NotImplementedException();
+            return Context.Bancos.ToList();
         }
     }
 }

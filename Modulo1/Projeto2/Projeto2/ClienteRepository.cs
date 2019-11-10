@@ -61,7 +61,7 @@ namespace Projeto2
 
         public IEnumerable<Cliente> Obter()
         {
-            throw new NotImplementedException();
+            return Context.Clientes.ToList();
         }
     }
 }
