@@ -153,6 +153,7 @@
             this.Controls.Add(this.dgContas);
             this.Name = "WF_Conta";
             this.Text = "Contas";
+            this.Load += new System.EventHandler(this.WF_Conta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgContas)).EndInit();
             this.ResumeLayout(false);
 

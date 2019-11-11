@@ -13,6 +13,7 @@ namespace Projeto3
         public int ProdutoId { get; set; }
         //public ICollection<Produto> Produtos { get; set; }
         public Fornecedor Fornecedor { get; set; }
+        public int FornecedorId { get; set; }
         public DateTime DtaRecebimento { get; set; }
         public decimal VlUnitario { get; set; }
         public int QtdRecebida { get; set; }

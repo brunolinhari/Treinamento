@@ -12,7 +12,8 @@ namespace Projeto3
 //        public Produto Produto { get; set; }
         public string Nome { get; set; }
         public Boolean Ativo { get; set; }
-//        public DateTime DtaRecebimento { get; set; }
-//        public int QtdRecebida { get; set; }
+        //        public DateTime DtaRecebimento { get; set; }
+        //        public int QtdRecebida { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
     }
 }

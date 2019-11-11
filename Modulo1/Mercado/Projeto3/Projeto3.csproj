@@ -67,9 +67,10 @@
     <Compile Include="IClienteRepository.cs" />
     <Compile Include="IEstoqueRepository.cs" />
     <Compile Include="IProdutoRepository.cs" />
-    <Compile Include="Migrations\201911091348105_Mercadinho3.cs" />
-    <Compile Include="Migrations\201911091348105_Mercadinho3.designer.cs">
-      <DependentUpon>201911091348105_Mercadinho3.cs</DependentUpon>
+    <Compile Include="IVendaRepository.cs" />
+    <Compile Include="Migrations\201911111245203_Tabela de Vendas.cs" />
+    <Compile Include="Migrations\201911111245203_Tabela de Vendas.designer.cs">
+      <DependentUpon>201911111245203_Tabela de Vendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pedido.cs" />
@@ -80,14 +81,17 @@
     <Compile Include="ProdutoRepository.cs" />
     <Compile Include="Projeto3Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Venda.cs" />
+    <Compile Include="VendaMap.cs" />
+    <Compile Include="VendaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911091348105_Mercadinho3.resx">
-      <DependentUpon>201911091348105_Mercadinho3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911111245203_Tabela de Vendas.resx">
+      <DependentUpon>201911111245203_Tabela de Vendas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

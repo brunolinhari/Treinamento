@@ -22,7 +22,7 @@ namespace Projeto3
             Property(c => c.VlVenda).IsRequired();
 
             HasOptional(e => e.Estoque).WithRequired(p => p.Produto);
-            //HasRequired(e => e.Pedidos).WithRequired(p => p.Produto);
+            //HasRequired(e => e.Pedido).WithRequired(p => p.Produto);
 
         }
     }

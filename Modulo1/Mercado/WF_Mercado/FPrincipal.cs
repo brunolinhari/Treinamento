@@ -40,5 +40,11 @@ namespace WF_Mercado
             FPedido frmPedido = new FPedido();
             frmPedido.ShowDialog();
         }
+
+        private void btnVenda_Click(object sender, EventArgs e)
+        {
+            FVenda frmVenda = new FVenda();
+            frmVenda.ShowDialog();
+        }
     }
 }

@@ -77,21 +77,24 @@ namespace WF_Mercado
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
-        {
-            
+        {            
             PedidoRepository pedidoRepository = new PedidoRepository();
             Pedido pedido = new Pedido();
             pedido.Numero = Convert.ToInt32(edNumero.Text);
             pedido.Fornecedor = fornecedorRepository.Obter(Convert.ToInt32(cbFornecedor.SelectedValue));
+            pedido.FornecedorId = pedido.Fornecedor.Id;
             pedido.Produto = produtoRepository.Obter(Convert.ToInt32(cbProduto.SelectedValue));
+            pedido.ProdutoId = pedido.Produto.Id;
             pedido.VlUnitario = Convert.ToDecimal(edVlCompra.Text);
             pedido.QtdRecebida = Convert.ToInt32(edQtdRecebida.Value);
             pedido.VlTotal = Convert.ToDecimal(edVlTotal.Text);
+            pedido.DtaRecebimento = edDtaRecebimento.Value;
             pedidoRepository.Inserir(pedido);
+            MessageBox.Show("Registro incluído com sucesso!");
 
             estoqueRepository.AtualizaSaldoEntrada(Convert.ToInt32(cbProduto.SelectedValue),
                                                    Convert.ToInt32(edQtdRecebida.Value));
-            MessageBox.Show("Registro incluído com sucesso");
+            MessageBox.Show("Estoque atualizado com sucesso!");
             AtualizaGrid();
         }
 

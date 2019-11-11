@@ -11,7 +11,7 @@ namespace Projeto3
     {
         public ClienteMap()
         {
-            ToTable("cliente");
+            ToTable("Cliente");
 
             HasKey(c => c.Id);
 

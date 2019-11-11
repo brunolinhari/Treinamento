@@ -82,5 +82,10 @@ namespace WF_Mercado
                 ckAtivo.Checked = fornecedor.Ativo; 
             }
         }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

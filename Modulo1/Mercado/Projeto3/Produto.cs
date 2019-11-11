@@ -16,7 +16,7 @@ namespace Projeto3
         public Boolean Ativo { get; set; }
         public Estoque Estoque { get; set; }
         public virtual ICollection<Pedido> Pedidos { get; set; }
-
+        public virtual ICollection<Venda> Vendas { get; set; }
         //public Pedido Pedido { get; set; }
         //public ICollection<Fornecedor> Fornecedores { get; set; }
     }

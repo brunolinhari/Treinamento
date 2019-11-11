@@ -24,9 +24,19 @@ namespace Projeto3
 
         public DbSet<Pedido> Pedidos { get; set; }
 
+        public DbSet<Venda> Vendas { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-         
+            modelBuilder.Entity<Venda>()
+                .HasRequired(s => s.Produto)
+                .WithMany(a => a.Vendas)
+                .HasForeignKey<int>(c => c.ProdutoId);
+
+            modelBuilder.Entity<Venda>()
+                .HasRequired(s => s.Cliente)
+                .WithMany(a => a.Vendas)
+                .HasForeignKey<int>(c => c.ClienteId);
 
             modelBuilder.Properties<String>().Configure(p => p.HasColumnType("varchar"));
 
@@ -35,13 +45,14 @@ namespace Projeto3
             modelBuilder.Configurations.Add(new EstoqueMap());
             modelBuilder.Configurations.Add(new FornecedorMap());
             modelBuilder.Configurations.Add(new PedidoMap());
+            modelBuilder.Configurations.Add(new VendaMap());
 
             base.OnModelCreating(modelBuilder);
         }
 
-        internal object Set<T>(object entidadeDB)
-        {
-            throw new NotImplementedException();
-        }
+//        internal object Set<T>(object entidadeDB)
+//        {
+//            throw new NotImplementedException();
+//        }
     }
 }

@@ -33,6 +33,7 @@
             this.btnProduto = new System.Windows.Forms.Button();
             this.btnFornecedor = new System.Windows.Forms.Button();
             this.btnEstoque = new System.Windows.Forms.Button();
+            this.btnVenda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPedido
@@ -48,7 +49,7 @@
             // 
             // btnCliente
             // 
-            this.btnCliente.Location = new System.Drawing.Point(0, 72);
+            this.btnCliente.Location = new System.Drawing.Point(0, 144);
             this.btnCliente.Name = "btnCliente";
             this.btnCliente.Size = new System.Drawing.Size(223, 75);
             this.btnCliente.TabIndex = 1;
@@ -58,7 +59,7 @@
             // 
             // btnProduto
             // 
-            this.btnProduto.Location = new System.Drawing.Point(220, 72);
+            this.btnProduto.Location = new System.Drawing.Point(220, 144);
             this.btnProduto.Name = "btnProduto";
             this.btnProduto.Size = new System.Drawing.Size(223, 75);
             this.btnProduto.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             // btnFornecedor
             // 
-            this.btnFornecedor.Location = new System.Drawing.Point(440, 72);
+            this.btnFornecedor.Location = new System.Drawing.Point(440, 144);
             this.btnFornecedor.Name = "btnFornecedor";
             this.btnFornecedor.Size = new System.Drawing.Size(223, 75);
             this.btnFornecedor.TabIndex = 3;
@@ -78,18 +79,30 @@
             // 
             // btnEstoque
             // 
-            this.btnEstoque.Location = new System.Drawing.Point(220, 146);
+            this.btnEstoque.Location = new System.Drawing.Point(220, 218);
             this.btnEstoque.Name = "btnEstoque";
             this.btnEstoque.Size = new System.Drawing.Size(223, 73);
             this.btnEstoque.TabIndex = 4;
             this.btnEstoque.Text = "Controle de Estoque";
             this.btnEstoque.UseVisualStyleBackColor = true;
             // 
+            // btnVenda
+            // 
+            this.btnVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenda.Location = new System.Drawing.Point(0, 72);
+            this.btnVenda.Name = "btnVenda";
+            this.btnVenda.Size = new System.Drawing.Size(663, 73);
+            this.btnVenda.TabIndex = 5;
+            this.btnVenda.Text = "VENDAS";
+            this.btnVenda.UseVisualStyleBackColor = true;
+            this.btnVenda.Click += new System.EventHandler(this.btnVenda_Click);
+            // 
             // FPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 219);
+            this.ClientSize = new System.Drawing.Size(663, 293);
+            this.Controls.Add(this.btnVenda);
             this.Controls.Add(this.btnEstoque);
             this.Controls.Add(this.btnFornecedor);
             this.Controls.Add(this.btnProduto);
@@ -108,6 +121,7 @@
         private System.Windows.Forms.Button btnProduto;
         private System.Windows.Forms.Button btnFornecedor;
         private System.Windows.Forms.Button btnEstoque;
+        private System.Windows.Forms.Button btnVenda;
     }
 }
 

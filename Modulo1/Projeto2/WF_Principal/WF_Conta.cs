@@ -65,5 +65,10 @@ namespace WF_Principal
             frmCaixa_Eletronico.ShowDialog();
             AtualizaGrid();
         }
+
+        private void WF_Conta_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

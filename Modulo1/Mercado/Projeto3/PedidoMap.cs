@@ -20,7 +20,13 @@ namespace Projeto3
             Property(c => c.VlUnitario).IsRequired();
             Property(c => c.VlTotal).IsRequired();
 
-            HasRequired(s => s.Produto).WithMany(a => a.Pedidos).HasForeignKey<int>(c => c.ProdutoId);
+            HasRequired(s => s.Produto)
+                .WithMany(a => a.Pedidos)
+                .HasForeignKey<int>(c => c.ProdutoId);
+
+            HasRequired(s => s.Fornecedor)
+                .WithMany(a => a.Pedidos)
+                .HasForeignKey<int>(c => c.FornecedorId);
         }
     }
 }
