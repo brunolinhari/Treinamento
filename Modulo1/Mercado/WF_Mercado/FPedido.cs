@@ -13,16 +13,16 @@ namespace WF_Mercado
 {
     public partial class FPedido : Form
     {
-        public FornecedorRepository fornecedorRepository { get; set; }
+        public FornecedorRepository fornecedorRepository = new FornecedorRepository();
         public IEnumerable<Fornecedor> Fornecedores { get; set; }
 
-        public ProdutoRepository produtoRepository { get; set; }
+        public ProdutoRepository produtoRepository = new ProdutoRepository();
         public IEnumerable<Produto> Produtos { get; set; }
 
-        public PedidoRepository pedidoRepository { get; set; }
+        public PedidoRepository pedidoRepository = new PedidoRepository();
         public IEnumerable<Pedido> Pedidos { get; set; }
 
-        public EstoqueRepository estoqueRepository { get; set; }
+        public EstoqueRepository estoqueRepository = new EstoqueRepository();
 
         public FPedido()
         {
@@ -31,7 +31,7 @@ namespace WF_Mercado
 
         public void Initialize()
         {
-            fornecedorRepository = new FornecedorRepository();
+            //fornecedorRepository = new FornecedorRepository();
             Fornecedores = new List<Fornecedor>();
             Fornecedores = fornecedorRepository.Obter().ToList();
             cbFornecedor.DataSource = null;
@@ -40,7 +40,7 @@ namespace WF_Mercado
             cbFornecedor.ValueMember = "Id";
             cbFornecedor.SelectedIndex = -1;
 
-            produtoRepository = new ProdutoRepository();
+            //produtoRepository = new ProdutoRepository();
             Produtos = new List<Produto>();
             Produtos = produtoRepository.Obter().ToList();
             cbProduto.DataSource = null;
@@ -54,7 +54,7 @@ namespace WF_Mercado
 
         public void AtualizaGrid()
         {
-            pedidoRepository = new PedidoRepository();
+            //pedidoRepository = new PedidoRepository();
             Pedidos = new List<Pedido>();
             Pedidos = pedidoRepository.Obter();
             dgPedido.DataSource = null;
@@ -78,23 +78,21 @@ namespace WF_Mercado
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {            
-            PedidoRepository pedidoRepository = new PedidoRepository();
+            //PedidoRepository pedidoRepository = new PedidoRepository();
             Pedido pedido = new Pedido();
             pedido.Numero = Convert.ToInt32(edNumero.Text);
-            pedido.Fornecedor = fornecedorRepository.Obter(Convert.ToInt32(cbFornecedor.SelectedValue));
-            pedido.FornecedorId = pedido.Fornecedor.Id;
-            pedido.Produto = produtoRepository.Obter(Convert.ToInt32(cbProduto.SelectedValue));
-            pedido.ProdutoId = pedido.Produto.Id;
+            pedido.FornecedorId = Convert.ToInt32(cbFornecedor.SelectedValue);
+            pedido.ProdutoId = Convert.ToInt32(cbProduto.SelectedValue);
             pedido.VlUnitario = Convert.ToDecimal(edVlCompra.Text);
             pedido.QtdRecebida = Convert.ToInt32(edQtdRecebida.Value);
             pedido.VlTotal = Convert.ToDecimal(edVlTotal.Text);
             pedido.DtaRecebimento = edDtaRecebimento.Value;
             pedidoRepository.Inserir(pedido);
-            MessageBox.Show("Registro incluído com sucesso!");
 
             estoqueRepository.AtualizaSaldoEntrada(Convert.ToInt32(cbProduto.SelectedValue),
                                                    Convert.ToInt32(edQtdRecebida.Value));
-            MessageBox.Show("Estoque atualizado com sucesso!");
+            MessageBox.Show("Registro incluído com sucesso!");
+            ///MessageBox.Show("Estoque atualizado com sucesso!");
             AtualizaGrid();
         }
 

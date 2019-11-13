@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projeto3
 {
-    public class ClienteRepository : BaseRepository<Cliente>
+    public class ClienteRepository : BaseRepository<Cliente>, IClienteRepository
     {
 
     }

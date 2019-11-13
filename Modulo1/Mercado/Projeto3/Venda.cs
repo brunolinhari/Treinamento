@@ -9,9 +9,9 @@ namespace Projeto3
     public class Venda : Entity
     {
         public int ClienteId { get; set; }
-        public Cliente Cliente { get; set; }
+        public Cliente Cliente { get; private set; }
         public int ProdutoId { get; set; }
-        public Produto Produto { get; set; }
+        public Produto Produto { get; private set; }
         public decimal VlUnitario { get; set; }
         public int Qtde { get; set; }
         public decimal VlTotal { get; set; }

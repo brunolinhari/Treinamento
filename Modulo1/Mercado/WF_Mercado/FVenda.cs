@@ -13,16 +13,17 @@ namespace WF_Mercado
 {
     public partial class FVenda : Form
     {
-        public ClienteRepository clienteRepository { get; set; }
+        public ClienteRepository clienteRepository = new ClienteRepository();
         public IEnumerable<Cliente> Clientes { get; set; }
 
-        public ProdutoRepository produtoRepository { get; set; }
+        public ProdutoRepository produtoRepository = new ProdutoRepository();
         public IEnumerable<Produto> Produtos { get; set; }
 
-        public VendaRepository vendaRepository { get; set; }
+        public VendaRepository vendaRepository = new VendaRepository();
+
         public IEnumerable<Venda> Vendas { get; set; }
 
-        public EstoqueRepository estoqueRepository { get; set; }
+        public EstoqueRepository estoqueRepository = new EstoqueRepository();
 
         public FVenda()
         {
@@ -31,7 +32,6 @@ namespace WF_Mercado
 
         public void AtualizaGrid()
         {
-            vendaRepository = new VendaRepository();
             Vendas = new List<Venda>();
             Vendas = vendaRepository.Obter();
             dgVenda.DataSource = null;
@@ -41,7 +41,7 @@ namespace WF_Mercado
 
         public void Initialize()
         {
-            clienteRepository = new ClienteRepository();
+            //clienteRepository = new ClienteRepository();
             Clientes = new List<Cliente>();
             Clientes = clienteRepository.Obter().ToList();
             cbCliente.DataSource = null;
@@ -50,7 +50,7 @@ namespace WF_Mercado
             cbCliente.ValueMember = "Id";
             cbCliente.SelectedIndex = -1;
 
-            produtoRepository = new ProdutoRepository();
+            //produtoRepository = new ProdutoRepository();
             Produtos = new List<Produto>();
             Produtos = produtoRepository.Obter().ToList();
             cbProduto.DataSource = null;
@@ -65,12 +65,10 @@ namespace WF_Mercado
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            VendaRepository vendaRepository = new VendaRepository();
+            //VendaRepository vendaRepository = new VendaRepository();
             Venda venda = new Venda();
-            venda.Cliente = clienteRepository.Obter(Convert.ToInt32(cbCliente.SelectedValue));
-            venda.ClienteId = venda.Cliente.Id;
-            venda.Produto = produtoRepository.Obter(Convert.ToInt32(cbProduto.SelectedValue));
-            venda.ProdutoId = venda.Produto.Id;
+            venda.ClienteId = Convert.ToInt32(cbCliente.SelectedValue);
+            venda.ProdutoId = Convert.ToInt32(cbProduto.SelectedValue);
             venda.VlUnitario = Convert.ToDecimal(edVlVenda.Text);
             venda.Qtde = Convert.ToInt32(edQtde.Value);
             venda.VlTotal = Convert.ToDecimal(edVlTotal.Text);
