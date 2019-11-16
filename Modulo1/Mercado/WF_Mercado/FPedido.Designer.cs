@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.dgPedido = new System.Windows.Forms.DataGridView();
-            this.Nomero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VlCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdRecebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VlTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbFornecedor = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbProduto = new System.Windows.Forms.ComboBox();
@@ -50,6 +44,12 @@
             this.edQtdRecebida = new System.Windows.Forms.NumericUpDown();
             this.edNumero = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.Nomero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VlUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdRecebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VlTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edQtdRecebida)).BeginInit();
             this.SuspendLayout();
@@ -61,166 +61,145 @@
             this.Nomero,
             this.Fornecedor,
             this.Produto,
-            this.VlCompra,
+            this.VlUnitario,
             this.QtdRecebida,
             this.VlTotal});
             this.dgPedido.Location = new System.Drawing.Point(1, 1);
+            this.dgPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgPedido.Name = "dgPedido";
-            this.dgPedido.Size = new System.Drawing.Size(722, 246);
+            this.dgPedido.RowHeadersWidth = 51;
+            this.dgPedido.Size = new System.Drawing.Size(963, 303);
             this.dgPedido.TabIndex = 0;
-            // 
-            // Nomero
-            // 
-            this.Nomero.DataPropertyName = "Numero";
-            this.Nomero.HeaderText = "Numero";
-            this.Nomero.Name = "Nomero";
-            // 
-            // Fornecedor
-            // 
-            this.Fornecedor.DataPropertyName = "DescFornecedor";
-            this.Fornecedor.HeaderText = "Fornecedor";
-            this.Fornecedor.Name = "Fornecedor";
-            // 
-            // Produto
-            // 
-            this.Produto.DataPropertyName = "DescProduto";
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            // 
-            // VlCompra
-            // 
-            this.VlCompra.DataPropertyName = "VlCompra";
-            this.VlCompra.HeaderText = "VlCompra";
-            this.VlCompra.Name = "VlCompra";
-            // 
-            // QtdRecebida
-            // 
-            this.QtdRecebida.DataPropertyName = "VlCompra";
-            this.QtdRecebida.HeaderText = "QtdRecebida";
-            this.QtdRecebida.Name = "QtdRecebida";
-            // 
-            // VlTotal
-            // 
-            this.VlTotal.DataPropertyName = "VlTotal";
-            this.VlTotal.HeaderText = "VlTotal";
-            this.VlTotal.Name = "VlTotal";
             // 
             // cbFornecedor
             // 
             this.cbFornecedor.FormattingEnabled = true;
-            this.cbFornecedor.Location = new System.Drawing.Point(94, 280);
+            this.cbFornecedor.Location = new System.Drawing.Point(125, 345);
+            this.cbFornecedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbFornecedor.Name = "cbFornecedor";
-            this.cbFornecedor.Size = new System.Drawing.Size(618, 21);
-            this.cbFornecedor.TabIndex = 15;
+            this.cbFornecedor.Size = new System.Drawing.Size(823, 24);
+            this.cbFornecedor.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 283);
+            this.label2.Location = new System.Drawing.Point(8, 348);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(81, 17);
             this.label2.TabIndex = 14;
             this.label2.Text = "Fornecedor";
             // 
             // cbProduto
             // 
             this.cbProduto.FormattingEnabled = true;
-            this.cbProduto.Location = new System.Drawing.Point(94, 307);
+            this.cbProduto.Location = new System.Drawing.Point(125, 378);
+            this.cbProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbProduto.Name = "cbProduto";
-            this.cbProduto.Size = new System.Drawing.Size(618, 21);
-            this.cbProduto.TabIndex = 16;
+            this.cbProduto.Size = new System.Drawing.Size(823, 24);
+            this.cbProduto.TabIndex = 3;
             this.cbProduto.DropDownClosed += new System.EventHandler(this.cbProduto_DropDownClosed);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 310);
+            this.label1.Location = new System.Drawing.Point(8, 382);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(58, 17);
             this.label1.TabIndex = 17;
             this.label1.Text = "Produto";
             // 
             // edDtaRecebimento
             // 
             this.edDtaRecebimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.edDtaRecebimento.Location = new System.Drawing.Point(591, 334);
+            this.edDtaRecebimento.Location = new System.Drawing.Point(788, 411);
+            this.edDtaRecebimento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.edDtaRecebimento.Name = "edDtaRecebimento";
-            this.edDtaRecebimento.Size = new System.Drawing.Size(121, 20);
-            this.edDtaRecebimento.TabIndex = 14;
+            this.edDtaRecebimento.Size = new System.Drawing.Size(160, 22);
+            this.edDtaRecebimento.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(502, 337);
+            this.label3.Location = new System.Drawing.Point(669, 415);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.Size = new System.Drawing.Size(112, 17);
             this.label3.TabIndex = 18;
             this.label3.Text = "Data de Entrega";
             // 
             // edVlCompra
             // 
-            this.edVlCompra.Location = new System.Drawing.Point(94, 334);
+            this.edVlCompra.Location = new System.Drawing.Point(125, 411);
+            this.edVlCompra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.edVlCompra.Name = "edVlCompra";
-            this.edVlCompra.Size = new System.Drawing.Size(80, 20);
-            this.edVlCompra.TabIndex = 21;
+            this.edVlCompra.Size = new System.Drawing.Size(105, 22);
+            this.edVlCompra.TabIndex = 4;
             this.edVlCompra.Leave += new System.EventHandler(this.edVlCompra_Leave);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 337);
+            this.label4.Location = new System.Drawing.Point(8, 415);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.Size = new System.Drawing.Size(94, 17);
             this.label4.TabIndex = 22;
             this.label4.Text = "Valor Compra";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(184, 337);
+            this.label5.Location = new System.Drawing.Point(245, 415);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.Size = new System.Drawing.Size(82, 17);
             this.label5.TabIndex = 24;
             this.label5.Text = "Quantidade";
             // 
             // edVlTotal
             // 
             this.edVlTotal.Enabled = false;
-            this.edVlTotal.Location = new System.Drawing.Point(404, 334);
+            this.edVlTotal.Location = new System.Drawing.Point(539, 411);
+            this.edVlTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.edVlTotal.Name = "edVlTotal";
-            this.edVlTotal.Size = new System.Drawing.Size(80, 20);
-            this.edVlTotal.TabIndex = 23;
+            this.edVlTotal.Size = new System.Drawing.Size(105, 22);
+            this.edVlTotal.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(340, 337);
+            this.label6.Location = new System.Drawing.Point(453, 415);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.Size = new System.Drawing.Size(77, 17);
             this.label6.TabIndex = 26;
             this.label6.Text = "Valor Total";
             // 
             // btnIncluir
             // 
-            this.btnIncluir.Location = new System.Drawing.Point(637, 360);
+            this.btnIncluir.Location = new System.Drawing.Point(849, 443);
+            this.btnIncluir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(75, 23);
-            this.btnIncluir.TabIndex = 25;
+            this.btnIncluir.Size = new System.Drawing.Size(100, 28);
+            this.btnIncluir.TabIndex = 8;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = true;
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // edQtdRecebida
             // 
-            this.edQtdRecebida.Location = new System.Drawing.Point(252, 335);
+            this.edQtdRecebida.Location = new System.Drawing.Point(336, 412);
+            this.edQtdRecebida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.edQtdRecebida.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.edQtdRecebida.Name = "edQtdRecebida";
-            this.edQtdRecebida.Size = new System.Drawing.Size(64, 20);
-            this.edQtdRecebida.TabIndex = 22;
+            this.edQtdRecebida.Size = new System.Drawing.Size(85, 22);
+            this.edQtdRecebida.TabIndex = 5;
             this.edQtdRecebida.Value = new decimal(new int[] {
             1,
             0,
@@ -230,25 +209,75 @@
             // 
             // edNumero
             // 
-            this.edNumero.Location = new System.Drawing.Point(94, 253);
+            this.edNumero.Location = new System.Drawing.Point(125, 311);
+            this.edNumero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.edNumero.Name = "edNumero";
-            this.edNumero.Size = new System.Drawing.Size(80, 20);
-            this.edNumero.TabIndex = 27;
+            this.edNumero.Size = new System.Drawing.Size(105, 22);
+            this.edNumero.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 256);
+            this.label7.Location = new System.Drawing.Point(8, 315);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 13);
+            this.label7.Size = new System.Drawing.Size(58, 17);
             this.label7.TabIndex = 28;
             this.label7.Text = "Número";
             // 
+            // Nomero
+            // 
+            this.Nomero.DataPropertyName = "Numero";
+            this.Nomero.HeaderText = "Numero";
+            this.Nomero.MinimumWidth = 6;
+            this.Nomero.Name = "Nomero";
+            this.Nomero.Width = 125;
+            // 
+            // Fornecedor
+            // 
+            this.Fornecedor.DataPropertyName = "DescFornecedor";
+            this.Fornecedor.HeaderText = "Fornecedor";
+            this.Fornecedor.MinimumWidth = 6;
+            this.Fornecedor.Name = "Fornecedor";
+            this.Fornecedor.Width = 125;
+            // 
+            // Produto
+            // 
+            this.Produto.DataPropertyName = "DescProduto";
+            this.Produto.HeaderText = "Produto";
+            this.Produto.MinimumWidth = 6;
+            this.Produto.Name = "Produto";
+            this.Produto.Width = 125;
+            // 
+            // VlUnitario
+            // 
+            this.VlUnitario.DataPropertyName = "VlUnitario";
+            this.VlUnitario.HeaderText = "VlUnitario";
+            this.VlUnitario.MinimumWidth = 6;
+            this.VlUnitario.Name = "VlUnitario";
+            this.VlUnitario.Width = 125;
+            // 
+            // QtdRecebida
+            // 
+            this.QtdRecebida.DataPropertyName = "QtdRecebida";
+            this.QtdRecebida.HeaderText = "Qtde";
+            this.QtdRecebida.MinimumWidth = 6;
+            this.QtdRecebida.Name = "QtdRecebida";
+            this.QtdRecebida.Width = 125;
+            // 
+            // VlTotal
+            // 
+            this.VlTotal.DataPropertyName = "VlTotal";
+            this.VlTotal.HeaderText = "VlTotal";
+            this.VlTotal.MinimumWidth = 6;
+            this.VlTotal.Name = "VlTotal";
+            this.VlTotal.Width = 125;
+            // 
             // FPedido
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 386);
+            this.ClientSize = new System.Drawing.Size(965, 475);
             this.Controls.Add(this.edNumero);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.edQtdRecebida);
@@ -265,6 +294,7 @@
             this.Controls.Add(this.cbFornecedor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgPedido);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FPedido";
             this.Text = "Pedidos";
             this.Load += new System.EventHandler(this.FPedido_Load);
@@ -291,13 +321,13 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnIncluir;
         private System.Windows.Forms.NumericUpDown edQtdRecebida;
+        private System.Windows.Forms.TextBox edNumero;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nomero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fornecedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VlCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VlUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtdRecebida;
         private System.Windows.Forms.DataGridViewTextBoxColumn VlTotal;
-        private System.Windows.Forms.TextBox edNumero;
-        private System.Windows.Forms.Label label7;
     }
 }

@@ -62,6 +62,12 @@
     <Compile Include="FCliente.Designer.cs">
       <DependentUpon>FCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEstoque.Designer.cs">
+      <DependentUpon>FEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="FFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FCliente.resx">
       <DependentUpon>FCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FEstoque.resx">
+      <DependentUpon>FEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FFornecedor.resx">
       <DependentUpon>FFornecedor.cs</DependentUpon>

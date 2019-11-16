@@ -54,7 +54,7 @@ namespace WF_Mercado
 
         public void AtualizaGrid()
         {
-            //pedidoRepository = new PedidoRepository();
+            pedidoRepository = new PedidoRepository();
             Pedidos = new List<Pedido>();
             Pedidos = pedidoRepository.Obter();
             dgPedido.DataSource = null;
@@ -77,23 +77,29 @@ namespace WF_Mercado
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
-        {            
-            //PedidoRepository pedidoRepository = new PedidoRepository();
-            Pedido pedido = new Pedido();
-            pedido.Numero = Convert.ToInt32(edNumero.Text);
-            pedido.FornecedorId = Convert.ToInt32(cbFornecedor.SelectedValue);
-            pedido.ProdutoId = Convert.ToInt32(cbProduto.SelectedValue);
-            pedido.VlUnitario = Convert.ToDecimal(edVlCompra.Text);
-            pedido.QtdRecebida = Convert.ToInt32(edQtdRecebida.Value);
-            pedido.VlTotal = Convert.ToDecimal(edVlTotal.Text);
-            pedido.DtaRecebimento = edDtaRecebimento.Value;
-            pedidoRepository.Inserir(pedido);
+        {
+            try
+            {
+                Pedido pedido = new Pedido();
+                pedido.Numero = Convert.ToInt32(edNumero.Text);
+                pedido.FornecedorId = Convert.ToInt32(cbFornecedor.SelectedValue);
+                pedido.ProdutoId = Convert.ToInt32(cbProduto.SelectedValue);
+                pedido.VlUnitario = Convert.ToDecimal(edVlCompra.Text);
+                pedido.QtdRecebida = Convert.ToInt32(edQtdRecebida.Value);
+                pedido.VlTotal = Convert.ToDecimal(edVlTotal.Text);
+                pedido.DtaRecebimento = edDtaRecebimento.Value;
+                pedidoRepository.Inserir(pedido);
 
-            estoqueRepository.AtualizaSaldoEntrada(Convert.ToInt32(cbProduto.SelectedValue),
-                                                   Convert.ToInt32(edQtdRecebida.Value));
-            MessageBox.Show("Registro incluído com sucesso!");
-            ///MessageBox.Show("Estoque atualizado com sucesso!");
-            AtualizaGrid();
+                estoqueRepository.AtualizaSaldoEntrada(Convert.ToInt32(cbProduto.SelectedValue),
+                                                       Convert.ToInt32(edQtdRecebida.Value));
+                MessageBox.Show("Registro incluído com sucesso!");
+                ///MessageBox.Show("Estoque atualizado com sucesso!");
+                AtualizaGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Falha ao incluir pedido: {ex.Message}");
+            }
         }
 
         private void cbProduto_DropDownClosed(object sender, EventArgs e)

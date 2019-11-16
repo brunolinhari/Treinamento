@@ -46,5 +46,11 @@ namespace WF_Mercado
             FVenda frmVenda = new FVenda();
             frmVenda.ShowDialog();
         }
+
+        private void btnEstoque_Click(object sender, EventArgs e)
+        {
+            FEstoque frmEstoque = new FEstoque();
+            frmEstoque.ShowDialog();
+        }
     }
 }

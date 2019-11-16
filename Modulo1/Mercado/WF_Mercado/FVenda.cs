@@ -32,10 +32,11 @@ namespace WF_Mercado
 
         public void AtualizaGrid()
         {
+            vendaRepository = new VendaRepository();
             Vendas = new List<Venda>();
             Vendas = vendaRepository.Obter();
             dgVenda.DataSource = null;
-            //dgVenda.AutoGenerateColumns = false;
+            dgVenda.AutoGenerateColumns = false;
             dgVenda.DataSource = Vendas.ToList();
         }
 
@@ -65,20 +66,65 @@ namespace WF_Mercado
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            //VendaRepository vendaRepository = new VendaRepository();
-            Venda venda = new Venda();
-            venda.ClienteId = Convert.ToInt32(cbCliente.SelectedValue);
-            venda.ProdutoId = Convert.ToInt32(cbProduto.SelectedValue);
-            venda.VlUnitario = Convert.ToDecimal(edVlVenda.Text);
-            venda.Qtde = Convert.ToInt32(edQtde.Value);
-            venda.VlTotal = Convert.ToDecimal(edVlTotal.Text);
-            vendaRepository.Inserir(venda);
-            MessageBox.Show("Registro incluído com sucesso!");
+            try
+            {
+                if (estoqueRepository.AtualizaSaldoSaida(Convert.ToInt32(cbProduto.SelectedValue),
+                                                         Convert.ToInt32(edQtde.Value)))
+                {
+                    Venda venda = new Venda();
+                    venda.ClienteId = Convert.ToInt32(cbCliente.SelectedValue);
+                    venda.ProdutoId = Convert.ToInt32(cbProduto.SelectedValue);
+                    venda.VlUnitario = Convert.ToDecimal(edVlVenda.Text);
+                    venda.Qtde = Convert.ToInt32(edQtde.Value);
+                    venda.VlTotal = Convert.ToDecimal(edVlTotal.Text);
+                    vendaRepository.Inserir(venda);
+                    Initialize();
+                    MessageBox.Show("Registro incluído com sucesso!");
+                }
+                else
+                {
+                    MessageBox.Show("Saldo Insuficiente!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Falha ao incluir venda: {ex.Message}");
+            }
         }
 
         private void FVenda_Load(object sender, EventArgs e)
         {
             Initialize();
+        }
+
+        private void edVlVenda_Leave(object sender, EventArgs e)
+        {
+            edVlTotal.Text = Convert.ToString(Convert.ToDecimal(edVlVenda.Text) * edQtde.Value);
+        }
+
+        private void edQtde_Leave(object sender, EventArgs e)
+        {
+            edVlTotal.Text = Convert.ToString(Convert.ToDecimal(edVlVenda.Text) * edQtde.Value);
+        }
+
+        private void cbProduto_Leave(object sender, EventArgs e)
+        {
+            if (cbProduto.SelectedIndex >= 0)
+            {
+                Produto produto = produtoRepository.Obter(Convert.ToInt32(cbProduto.SelectedValue));
+                edVlVenda.Text = Convert.ToString(produto.VlVenda);
+                edVlTotal.Text = Convert.ToString(produto.VlVenda * edQtde.Value);
+            }
+        }
+
+        private void cbProduto_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cbProduto.SelectedIndex >= 0)
+            {
+                Produto produto = produtoRepository.Obter(Convert.ToInt32(cbProduto.SelectedValue));
+                edVlVenda.Text = Convert.ToString(produto.VlVenda);
+                edVlTotal.Text = Convert.ToString(produto.VlVenda * edQtde.Value);
+            }
         }
     }
 }

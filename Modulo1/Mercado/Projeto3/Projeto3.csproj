@@ -68,9 +68,9 @@
     <Compile Include="IEstoqueRepository.cs" />
     <Compile Include="IProdutoRepository.cs" />
     <Compile Include="IVendaRepository.cs" />
-    <Compile Include="Migrations\201911111245203_Tabela de Vendas.cs" />
-    <Compile Include="Migrations\201911111245203_Tabela de Vendas.designer.cs">
-      <DependentUpon>201911111245203_Tabela de Vendas.cs</DependentUpon>
+    <Compile Include="Migrations\201911140233341_Classe Vendas.cs" />
+    <Compile Include="Migrations\201911140233341_Classe Vendas.designer.cs">
+      <DependentUpon>201911140233341_Classe Vendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pedido.cs" />
@@ -90,8 +90,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911111245203_Tabela de Vendas.resx">
-      <DependentUpon>201911111245203_Tabela de Vendas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911140233341_Classe Vendas.resx">
+      <DependentUpon>201911140233341_Classe Vendas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

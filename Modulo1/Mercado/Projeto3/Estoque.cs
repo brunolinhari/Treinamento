@@ -12,5 +12,6 @@ namespace Projeto3
         public Produto Produto { get; set; }
         public int Saldo { get; set; }
         public int Minimo { get; set; }
+        public string DescProduto => Produto.Descricao;
     }
 }

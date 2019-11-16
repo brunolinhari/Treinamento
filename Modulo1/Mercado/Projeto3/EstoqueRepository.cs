@@ -6,56 +6,111 @@ using System.Threading.Tasks;
 
 namespace Projeto3
 {
-    public class EstoqueRepository : BaseRepository<Estoque>, IEstoqueRepository
+    public class EstoqueRepository : BaseRepository<Estoque>
     {
-        //public ProdutoRepository produtoRepository { get; set; }
+        public Projeto3Context Context { get; set; }
+        public override IEnumerable<Estoque> Obter()
+        {
+            return Context.Estoques.Include("Produto").ToList();
+        }
+
+        public override Estoque Obter(int Id)
+        {
+            return Context.Estoques.Include("Produto").Where(a => a.Id == Id).FirstOrDefault();
+        }
+
+
+        public EstoqueRepository()
+        {
+            Context = new Projeto3Context();
+        }
 
         public void AtualizaSaldoEntrada(int Id, int Qtde)
         {
-            Estoque estoque = new Estoque();
-            //Estoque estoque = Obter(Id);
-            estoque = Obter(Id);
-            if (estoque == null)
+            Estoque estoqueDB = Obter(Id);
+            if (estoqueDB == null)
             {
-                estoque.Id = Id;
-                estoque.Saldo = Qtde;
+                int minimo = 1;
                 if (Qtde > 3)
                 {
-                    estoque.Minimo = Qtde - 3;
+                    minimo = Qtde - 3;
                 }
-                else
-                {
-                    estoque.Minimo = 1;
-                }
-                Inserir(estoque);
+                Context.Database.ExecuteSqlCommand($"INSERT INTO Estoque (Id, Saldo, Minimo) VALUES ({Id}, {Qtde}, {minimo})");
             }
             else
             {
-                estoque.Saldo = estoque.Saldo + Qtde;
-                Editar(estoque);
+                Context.Database.ExecuteSqlCommand($"UPDATE Estoque SET saldo=saldo+{Qtde} WHERE id={Id}");
             }
         }
 
         public Boolean AtualizaSaldoSaida(int Id, int Qtde)
         {
-            Estoque estoque = Obter(Id);
-            if (estoque == null)
+            Estoque estoqueDB = Obter(Id);
+            if (estoqueDB == null)
             {
                 return false;
             }
             else
             {
-                if (estoque.Saldo < Qtde)
+                if (estoqueDB.Saldo < Qtde)
                 {
                     return false;
                 }
                 else
                 {
-                    estoque.Saldo = estoque.Saldo - Qtde;
-                    Editar(estoque);
+                    Context.Database.ExecuteSqlCommand($"UPDATE Estoque SET saldo=saldo-{Qtde} WHERE id={Id}");
                     return true;
                 }
+
             }
+
         }
+        //public void AtualizaSaldoEntrada(int Id, int Qtde)
+        //{
+        //    //Estoque estoque = new Estoque();
+        //    Estoque estoque = Obter(Id);
+        //    estoque = Obter(Id);
+        //    if (estoque == null)
+        //    {
+        //        estoque.Id = Id;
+        //        estoque.Saldo = Qtde;
+        //        if (Qtde > 3)
+        //        {
+        //            estoque.Minimo = Qtde - 3;
+        //        }
+        //        else
+        //        {
+        //            estoque.Minimo = 1;
+        //        }
+        //        Inserir(estoque);
+        //    }
+        //    else
+        //    {
+        //        estoque.Saldo = estoque.Saldo + Qtde;
+        //        Editar(estoque);
+        //    }
+        //}
+        //
+        //public Boolean AtualizaSaldoSaida(int Id, int Qtde)
+        //{
+        //    Estoque estoque = Obter(Id);
+        //    if (estoque == null)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        if (estoque.Saldo < Qtde)
+        //        {
+        //            return false;
+        //        }
+        //        else
+        //        {
+        //            estoque.Saldo = estoque.Saldo - Qtde;
+        //            Editar(estoque);
+        //            return true;
+        //        }
+        //    }
+        //}
     }
 }
