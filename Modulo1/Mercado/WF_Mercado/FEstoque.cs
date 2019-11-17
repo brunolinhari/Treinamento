@@ -61,11 +61,6 @@ namespace WF_Mercado
                     edAtualizaSaldo.Text = Convert.ToString(estoque.Saldo);
                     edProdutoId.Text = Convert.ToString(estoque.Id);
                     edSaldoAtual.Text = Convert.ToString(estoque.Saldo);
-                    //fCad_Livro frm = new fCad_Livro();
-                    //frm.PreencherLivro(livro);
-                    //frm.ShowDialog();
-
-                    //AtualizaGrid();
                 }
             }
         }

@@ -126,5 +126,34 @@ namespace WF_Mercado
                 edVlTotal.Text = Convert.ToString(produto.VlVenda * edQtde.Value);
             }
         }
+
+        private void dgVenda_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Venda venda = (Venda)(dgVenda.SelectedRows[0].DataBoundItem);
+            if (dgVenda.Columns[e.ColumnIndex].Name == "btnEstornar")
+            {
+                if (dgVenda.SelectedRows.Count > 0)
+                {
+                    var Resposta = MessageBox.Show("Confirla o estorno do lançamento?",
+                                                 "",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Exclamation);
+                    if (Resposta == DialogResult.Yes)
+                    {
+
+                        try
+                        {
+                            vendaRepository.Apagar(venda.Id);
+                            estoqueRepository.AtualizaSaldoEntrada(venda.ProdutoId, venda.Qtde);
+                            AtualizaGrid();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Falha ao estornar lançamento: {ex.Message}");
+                        }
+                    }
+                }
+            }
+        }
     }
 }

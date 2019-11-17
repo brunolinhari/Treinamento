@@ -46,12 +46,14 @@
             this.VlUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VlTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEstornar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edQtde)).BeginInit();
             this.SuspendLayout();
             // 
             // dgVenda
             // 
+            this.dgVenda.AllowUserToOrderColumns = true;
             this.dgVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgVenda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -59,13 +61,16 @@
             this.DescProduto,
             this.VlUnitario,
             this.Qtde,
-            this.VlTotal});
+            this.VlTotal,
+            this.btnEstornar});
             this.dgVenda.Location = new System.Drawing.Point(1, 1);
             this.dgVenda.Margin = new System.Windows.Forms.Padding(4);
             this.dgVenda.Name = "dgVenda";
             this.dgVenda.RowHeadersWidth = 51;
+            this.dgVenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgVenda.Size = new System.Drawing.Size(920, 325);
             this.dgVenda.TabIndex = 0;
+            this.dgVenda.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVenda_CellClick);
             // 
             // label1
             // 
@@ -191,7 +196,7 @@
             this.Id.HeaderText = "Venda";
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
-            this.Id.Width = 125;
+            this.Id.Width = 60;
             // 
             // DescCliente
             // 
@@ -199,7 +204,7 @@
             this.DescCliente.HeaderText = "Cliente";
             this.DescCliente.MinimumWidth = 6;
             this.DescCliente.Name = "DescCliente";
-            this.DescCliente.Width = 125;
+            this.DescCliente.Width = 140;
             // 
             // DescProduto
             // 
@@ -207,7 +212,6 @@
             this.DescProduto.HeaderText = "Produto";
             this.DescProduto.MinimumWidth = 6;
             this.DescProduto.Name = "DescProduto";
-            this.DescProduto.Width = 125;
             // 
             // VlUnitario
             // 
@@ -215,7 +219,7 @@
             this.VlUnitario.HeaderText = "VlUnitario";
             this.VlUnitario.MinimumWidth = 6;
             this.VlUnitario.Name = "VlUnitario";
-            this.VlUnitario.Width = 125;
+            this.VlUnitario.Width = 80;
             // 
             // Qtde
             // 
@@ -223,7 +227,7 @@
             this.Qtde.HeaderText = "Qtde";
             this.Qtde.MinimumWidth = 6;
             this.Qtde.Name = "Qtde";
-            this.Qtde.Width = 125;
+            this.Qtde.Width = 80;
             // 
             // VlTotal
             // 
@@ -231,7 +235,16 @@
             this.VlTotal.HeaderText = "VlTotal";
             this.VlTotal.MinimumWidth = 6;
             this.VlTotal.Name = "VlTotal";
-            this.VlTotal.Width = 125;
+            this.VlTotal.Width = 80;
+            // 
+            // btnEstornar
+            // 
+            this.btnEstornar.HeaderText = "";
+            this.btnEstornar.MinimumWidth = 6;
+            this.btnEstornar.Name = "btnEstornar";
+            this.btnEstornar.Text = "Estornar";
+            this.btnEstornar.UseColumnTextForButtonValue = true;
+            this.btnEstornar.Width = 80;
             // 
             // FVenda
             // 
@@ -281,5 +294,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VlUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qtde;
         private System.Windows.Forms.DataGridViewTextBoxColumn VlTotal;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEstornar;
     }
 }
