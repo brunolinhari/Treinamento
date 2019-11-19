@@ -8,7 +8,7 @@ namespace Projeto3
 {
     public class EstoqueRepository : BaseRepository<Estoque>
     {
-        public Projeto3Context Context { get; set; }
+     //   public Projeto3Context Context { get; set; }
         public override IEnumerable<Estoque> Obter()
         {
             return Context.Estoques.Include("Produto").ToList();
@@ -20,97 +20,96 @@ namespace Projeto3
         }
 
 
-        public EstoqueRepository()
-        {
-            Context = new Projeto3Context();
-        }
+        //public EstoqueRepository()
+        //{
+        //    Context = new Projeto3Context();
+        //}
 
+//        public void AtualizaSaldoEntrada(int Id, int Qtde)
+//        {
+//            Estoque estoqueDB = Obter(Id);
+//            if (estoqueDB == null)
+//            {
+//                int minimo = 1;
+//                if (Qtde > 3)
+//                {
+//                    minimo = Qtde - 3;
+//                }
+//                Context.Database.ExecuteSqlCommand($"INSERT INTO Estoque (Id, Saldo, Minimo) VALUES ({Id}, {Qtde}, {minimo})");
+//            }
+//            else
+//            {
+//                Context.Database.ExecuteSqlCommand($"UPDATE Estoque SET saldo=saldo+{Qtde} WHERE id={Id}");
+//            }
+//        }
+//
+//        public Boolean AtualizaSaldoSaida(int Id, int Qtde)
+//        {
+//            Estoque estoqueDB = Obter(Id);
+//            if (estoqueDB == null)
+//            {
+//                return false;
+//            }
+//            else
+//            {
+//                if (estoqueDB.Saldo < Qtde)
+//                {
+//                    return false;
+//                }
+//                else
+//                {
+//                    Context.Database.ExecuteSqlCommand($"UPDATE Estoque SET saldo=saldo-{Qtde} WHERE id={Id}");
+//                    return true;
+//                }
+//
+//            }
+//
+//        }
         public void AtualizaSaldoEntrada(int Id, int Qtde)
         {
-            Estoque estoqueDB = Obter(Id);
-            if (estoqueDB == null)
+            Estoque estoque = Obter(Id);
+            if (estoque == null)
             {
-                int minimo = 1;
+                estoque = new Estoque();
+                estoque.Id = Id;
+                estoque.Saldo = Qtde;
                 if (Qtde > 3)
                 {
-                    minimo = Qtde - 3;
+                    estoque.Minimo = Qtde - 3;
                 }
-                Context.Database.ExecuteSqlCommand($"INSERT INTO Estoque (Id, Saldo, Minimo) VALUES ({Id}, {Qtde}, {minimo})");
+                else
+                {
+                    estoque.Minimo = 1;
+                }
+                Inserir(estoque);
             }
             else
             {
-                Context.Database.ExecuteSqlCommand($"UPDATE Estoque SET saldo=saldo+{Qtde} WHERE id={Id}");
+                estoque.Saldo += Qtde;
+                Editar(estoque);
             }
         }
-
+        
         public Boolean AtualizaSaldoSaida(int Id, int Qtde)
         {
-            Estoque estoqueDB = Obter(Id);
-            if (estoqueDB == null)
+            Estoque estoque = Obter(Id);
+            if (estoque == null)
             {
                 return false;
             }
             else
             {
-                if (estoqueDB.Saldo < Qtde)
+                if (estoque.Saldo < Qtde)
                 {
                     return false;
                 }
                 else
                 {
-                    Context.Database.ExecuteSqlCommand($"UPDATE Estoque SET saldo=saldo-{Qtde} WHERE id={Id}");
+                    estoque.Saldo = estoque.Saldo - Qtde;
+                    Editar(estoque);
                     return true;
                 }
-
             }
-
         }
-        //public void AtualizaSaldoEntrada(int Id, int Qtde)
-        //{
-        //    //Estoque estoque = new Estoque();
-        //    Estoque estoque = Obter(Id);
-        //    estoque = Obter(Id);
-        //    if (estoque == null)
-        //    {
-        //        estoque.Id = Id;
-        //        estoque.Saldo = Qtde;
-        //        if (Qtde > 3)
-        //        {
-        //            estoque.Minimo = Qtde - 3;
-        //        }
-        //        else
-        //        {
-        //            estoque.Minimo = 1;
-        //        }
-        //        Inserir(estoque);
-        //    }
-        //    else
-        //    {
-        //        estoque.Saldo = estoque.Saldo + Qtde;
-        //        Editar(estoque);
-        //    }
-        //}
-        //
-        //public Boolean AtualizaSaldoSaida(int Id, int Qtde)
-        //{
-        //    Estoque estoque = Obter(Id);
-        //    if (estoque == null)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        if (estoque.Saldo < Qtde)
-        //        {
-        //            return false;
-        //        }
-        //        else
-        //        {
-        //            estoque.Saldo = estoque.Saldo - Qtde;
-        //            Editar(estoque);
-        //            return true;
-        //        }
-        //    }
-        //}
     }
 }
