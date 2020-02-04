@@ -1,0 +1,36 @@
+<div class="container main-container">
+    <h4>Interpolation</h4>
+    <p>Cliques {{contador}}</p>
+
+    <br>
+    <br>
+    <br>
+    <hr>
+
+    <h4>Property Binding</h4>
+    <img [src]=urlImagem height="50px" width="50px">
+    
+    <br>
+    <br>
+    <br>
+    <hr>
+
+    <h4>Event Binding</h4>
+    <button class="btn btn-info" (click)="incrementaContador()">Clique</button>
+    <br>
+    <br>
+    <button class="btn btn-dark" [disabled]="contador <= 9" (click)="zerarContador()">Zerar</button>
+
+    <br>
+    <br>
+    <br>
+    <hr>
+
+    <h4>Two way Binding</h4>
+
+    <input type="text" [(ngModel)]="Nome" placeholder="digite seu nome">
+    <br>
+    <label>Seu nome é {{Nome}}</label>
+
+    <p class="{{Nome}}">Teste</p>
+</div>
