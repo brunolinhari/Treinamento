@@ -1,4 +1,4 @@
-using BOL.Data.Model;
+using BOL.Busines.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace BOL.Data.Mapping
