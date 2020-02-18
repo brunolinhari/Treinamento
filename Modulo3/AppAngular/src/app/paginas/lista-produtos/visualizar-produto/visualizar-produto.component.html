@@ -1,0 +1,41 @@
+<div class="container main-container">
+    <p>visualizar-produto works!</p>
+    <div class="row">
+        <div class="col">
+            <a class="text-decoration-none">
+                <div stule="align-content:center">
+                    <img src="assets/{{modelo?.imagem}}" height="164px" width="253px">                        
+                </div>
+            </a>
+    
+        </div>
+        <div class="col">
+            <h4 class="card-title">{{modelo?.descricao | titlecase}}</h4>
+
+            <div [ngSwitch]="modelo?.promocao">
+                <p *ngSwitchCase="true">Promoção:</p>
+                <p *ngSwitchCase="false">Por apenas:</p>
+            </div>
+            <div *ngIf="modelo?.promocao">
+                <h4>
+                    <small>
+                        <del>{{modelo?.preco | currency:'BRL':symbol:'1.2-2':'pt'}}</del>
+                    </small>
+                    <p>{{modelo?.precoPromocao | currency:'BRL':symbol:'1.2-2':'pt'}}</p>    
+                </h4>
+            </div>
+            <div *ngIf="!modelo?.promocao">
+                <h4>
+                    <br>
+                    {{modelo?.preco | currency:'BRL':symbol:'1.2-2':'pt'}}
+                </h4>
+            </div>
+
+            <a class="btn btn-outline-success text-black btn-block" (click)="voltar()">
+                <span class="fa fa-shopping-cart" aria-hidden="true"></span> Voltar
+            </a>
+            
+        </div>
+
+    </div>
+</div>

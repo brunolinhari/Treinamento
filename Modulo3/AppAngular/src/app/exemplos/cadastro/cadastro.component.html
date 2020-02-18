@@ -7,130 +7,65 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Nome</label>
-            <!-- <input type="text" class="form-control" formControlName="nome"
+            <input type="text" class="form-control" formControlName="nome"
             [ngClass]="{'is-invalid': displayMessage.nome}">
             
             <span class="text-danger" *ngIf="displayMessage.nome">
                 <p [innerHTML]="displayMessage.nome"></p>
-            </span> -->
+            </span>
           </div>
         </div>
-  
+
         <div class="col-md-4">
-            <div class="form-group">
-              <label>E-Mail</label>
-              <input type="email" class="form-control" formControlName="email"
-              [ngClass]="{'is-invalid':cadastroForm.get('email').errors
-              &&
-              (
-                  cadastroForm.get('email').touched ||
-                  cadastroForm.get('email').dirty
-              )}">
-              <span 
-              *ngIf="cadastroForm.get('email').errors?.required
-              &&
-              (
-                  cadastroForm.get('email').touched ||
-                  cadastroForm.get('email').dirty
-              )" 
-              class="text-danger">
-                  <p>Preencha o e-mail</p>
-              </span>
-  
-              <span 
-              *ngIf="cadastroForm.get('email').errors?.email
-              &&
-              (
-                  cadastroForm.get('email').touched ||
-                  cadastroForm.get('email').dirty
-              )" 
-              class="text-danger">
-                  <p>E-Mail está inválido</p>
-              </span>
-            </div>
+          <div class="form-group">
+            <label>E-Mail</label>
+            <input type="email" class="form-control" formControlName="email"
+            [ngClass]="{'is-invalid': displayMessage.email}">
+            
+            <span class="text-danger" *ngIf="displayMessage.email">
+                <p [innerHTML]="displayMessage.email"></p>
+            </span>
           </div>
-  
+        </div>
+
         <div class="col-md-4">
           <div class="form-group">
             <label>CPF</label>
             <input type="text" class="form-control" formControlName="cpf" cpf [textMask]="{mask: MASKS.cpf.textMask}"
-            [ngClass]="{'is-invalid':cadastroForm.get('cpf').errors
-            &&
-            (
-                cadastroForm.get('cpf').touched ||
-                cadastroForm.get('cpf').dirty
-            )}">
-            <span 
-            *ngIf="cadastroForm.get('cpf').errors?.required
-            &&
-            (
-                cadastroForm.get('cpf').touched ||
-                cadastroForm.get('cpf').dirty
-            )" 
-            class="text-danger">
-                <p>Preencha o CPF</p>
+            [ngClass]="{'is-invalid': displayMessage.cpf}">
+            
+            <span class="text-danger" *ngIf="displayMessage.cpf">
+                <p [innerHTML]="displayMessage.cpf"></p>
             </span>
-            <span 
-            *ngIf="cadastroForm.get('cpf').errors?.cpf
-            &&
-            (
-                cadastroForm.get('cpf').touched ||
-                cadastroForm.get('cpf').dirty
-            )" 
-            class="text-danger">
-                <p>CPF está inválido</p>
-            </span>
-      </div>
-        </div>
+          </div>
+        </div>        
 
         <div class="col-md-4">
           <div class="form-group">
             <label>Senha</label>
             <input type="password" class="form-control"  formControlName="senha"
-            [ngClass]="{'is-invalid':cadastroForm.get('senha').errors
-            &&
-            (
-                cadastroForm.get('senha').touched ||
-                cadastroForm.get('senha').dirty
-            )}">
+            [ngClass]="{'is-invalid': displayMessage.senha}">
             
-            <span 
-            *ngIf="cadastroForm.get('senha').errors
-            && 
-            (
-                cadastroForm.get('senha').touched ||
-                cadastroForm.get('senha').dirty
-            )" 
-            class="text-danger">
-                <p>Preencha a senha</p>
+            <span class="text-danger" *ngIf="displayMessage.senha">
+                <p [innerHTML]="displayMessage.senha"></p>
             </span>
           </div>
         </div>    
+
         <div class="col-md-4">
           <div class="form-group">  
             <label>Confirmar Senha</label>
             <input type="password" class="form-control" formControlName="confirmarSenha"
-            [ngClass]="{'is-invalid':cadastroForm.get('confirmarSenha').errors
-            &&
-            (
-                cadastroForm.get('confirmarSenha').touched ||
-                cadastroForm.get('confirmarSenha').dirty
-            )}">
+            [ngClass]="{'is-invalid': displayMessage.confirmarSenha}">
             
-            <span 
-            *ngIf="cadastroForm.get('confirmarSenha').errors
-            &&
-            (
-                cadastroForm.get('confirmarSenha').touched ||
-                cadastroForm.get('confirmarSenha').dirty
-            )" 
-            class="text-danger">
-                <p>Preencha a confirmação de senha</p>
+            <span class="text-danger" *ngIf="displayMessage.confirmarSenha">
+                <p [innerHTML]="displayMessage.confirmarSenha"></p>
             </span>
           </div>    
         </div>
-      </div>
-        
+
+      </div>      
+      
       <button type="submit" class="btn btn-success" [disabled]="!cadastroForm.valid">Submit</button>
 
       <br>

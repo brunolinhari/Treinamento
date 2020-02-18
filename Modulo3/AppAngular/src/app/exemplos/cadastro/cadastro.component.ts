@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChildren, ElementRef } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, FormControlDirective, FormControlName } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
 import { NgBrazilValidators } from 'ng-brazil';
 import { utilsBr } from 'js-brasil';
 import { CustomValidators } from 'ng2-validation';
@@ -14,41 +14,41 @@ import { Observable, fromEvent, merge } from 'rxjs';
 export class CadastroComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef}) formImputElements: ElementRef[];
 
+  alteracoesPendentes: boolean;
   cadastroForm: FormGroup;
 
   public MASKS = utilsBr.MASKS;
 
-  // validationMessages: ValidationMessages;
-  // genericValidator: GenericValidator;
-  // displayMessage: DisplayMessage = {};
+   validationMessages: ValidationMessages;
+   genericValidator: GenericValidator;
+   displayMessage: DisplayMessage = {};
 
   constructor(private fb: FormBuilder) {
-    // this.validationMessages = {
-    //   nome: {
-    //     required: 'O Nome é requerido',
-    //     minlength: 'O Nome precisa ter no mínimo 2 caracteres',
-    //     maxlength: 'O Nome precisa ter no máximo 60 caracteres'
-    //   },
-    //   cpf: {
-    //     required: 'Informe o CPF',
-    //     cpf: 'CPF em formato inválido'
-    //   },
-    //   email: {
-    //     required: 'Informe o e-mail',
-    //     email: 'Email inválido'
-    //   },
-    //   senha: {
-    //     required: 'Informe a senha',
-    //     rangeLength: 'A senha deve possuir entre 6 e 15 caracteres'
-    //   },
-    //   confirmarSenha: {
-    //     required: 'Informe a senha novamente',
-    //     rangeLength: 'A senha deve possuir entre 6 e 15 caracteres',
-    //     equalTo: 'As senhas não conferem'
-    //   }
-    // };
+     this.validationMessages = {
+       nome: {
+         required: 'O Nome é requerido',
+         rangeLength: 'O Nome precisa ter no mínimo 2 e no máximo 15 caracteres'
+       },
+       cpf: {
+         required: 'Informe o CPF',
+         cpf: 'CPF em formato inválido'
+       },
+       email: {
+         required: 'Informe o e-mail',
+         email: 'Email inválido'
+       },
+       senha: {
+         required: 'Informe a senha',
+         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres'
+       },
+       confirmarSenha: {
+         required: 'Informe a senha novamente',
+         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres',
+         equalTo: 'As senhas não conferem'
+       }
+     };
 
-    // this.genericValidator = new GenericValidator(this.validationMessages);
+     this.genericValidator = new GenericValidator(this.validationMessages);
   }
 
   ngOnInit() {
@@ -80,20 +80,23 @@ export class CadastroComponent implements OnInit, AfterViewInit {
       nome: ['', [Validators.required,CustomValidators.rangeLength([2, 15])]],
       email: ['', [Validators.required, Validators.email]],
       cpf: ['', [Validators.required, NgBrazilValidators.cpf]], 
-      senha: ['', senha],
-      confirmarSenha: ['', confirmarSenha]
+      senha: senha,
+      confirmarSenha: confirmarSenha
     })
   }
 
   ngAfterViewInit(): void {
-    //let controlBlurs: Observable<any>[] = this.formImputElements.map((FormControl: ElementRef) => fromEvent(FormControl.nativeElement, 'blur'));
-    //merge(...controlBlurs).subscribe(() => {
-    //  this.displayMessage = this.genericValidator.processarMensagens(this.cadastroForm);
-    //});
+    let controlBlurs: Observable<any>[] = this.formImputElements.map((FormControl: ElementRef) => fromEvent(FormControl.nativeElement, 'blur'));
+    merge(...controlBlurs).subscribe(() => {
+      this.displayMessage = this.genericValidator.processarMensagens(this.cadastroForm);
+      this.alteracoesPendentes = true;
+    });
   }
 
   salvar(){
     console.log(this.cadastroForm.value);
+
+    this.alteracoesPendentes = false;
   }
 
 }
